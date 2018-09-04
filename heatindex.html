@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+  <html lang = en>
+
+    <head>
+      <title>Heat Index Calculator</title>
+      <style>
+        body{
+          background-color: ghostwhite;
+          text-align: center;
+          font-family: sans-serif;
+          color : dimgrey;
+        }
+        button{
+          margin-top:  20px;
+          margin-bottom: 20px;
+          background-color: dimgrey;
+          color: white;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Heat Index Calculator</h1>
+      <p>
+        The following calculator, will output a value of the current
+        Heat Index based on the temperature, in Fahrenheit,<br>
+        and the Relative Humidity as a percent between 0 and 100.<br>
+        Calculate the Heat Index now, below.
+      </p>
+      <div class= "row">
+        <p>Please enter the temperature in Fahrenheit:</p>
+        <input type="number" id ="temp">
+      </div>
+      <div class = "row">
+        <p>Please enter the Relative Humidity as a percent between 0 and 100:</p>
+        <input type = "number" id = "relhum">
+      </div>
+      <button onclick= "getHeatIndex()">Calculate</button>
+      <div class = "row">
+
+        <div id = heatIndex></div>
+      </div>
+      <script>
+        function getHeatIndex(){
+          var temp= document.getElementById('temp').value;
+          var relhum = document.getElementById('relhum').value;
+          var index = -42.379 + 2.04901523 * temp + 10.14333127 * relhum - 0.22475541
+            * temp * relhum - 0.00683783 * temp^2 - 0.05481717 * relhum^2 + 0.00122874 * temp^2
+            * relhum + 0.00085282 * temp * relhum^2 - 0.00000199 * temp^2 * relhum^2;
+           if (relhum >= 0 && relhum <= 100){
+             document.getElementById("heatIndex").innerHTML = "The heat index is " + index;
+             temp == 0;
+             relhum == 0;
+           }
+
+           else{
+             document.getElementById("heatIndex").innerHTML = "Please enter a value for the "+
+              "Relative Humidity between 0 and 100";
+              temp == 0;
+              relhum == 0;
+           }
+        }
+      </script>
+    </body>
+</html>
